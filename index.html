@@ -129,7 +129,7 @@
   }
 
   /* ---------- Hero ---------- */
-  .hero{position:relative; padding:172px 0 104px; overflow:hidden;}
+  .hero{position:relative; padding:110px 0 64px; overflow:hidden;}
   .hero-bg{position:absolute; inset:0; z-index:0; pointer-events:none; background:var(--logo-mark) no-repeat; background-position:calc(100% + 30px) center; background-size:auto 122%; opacity:.06;}
   .hero .wrap{position:relative; z-index:1;}
   @media(max-width:760px){ .hero-bg{background-size:auto 64%; background-position:right -30px top 14%; opacity:.05;} }
@@ -463,12 +463,12 @@
 
     <div class="unlock-grid">
       <div class="ucard reveal">
-        <div class="badge indigo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 17l6-6 4 4 7-7" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 8h4v4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="badge soft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 17l6-6 4 4 7-7" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 8h4v4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <h3>Raise More</h3>
         <p>Without adding headcount. Your data surfaces the right donors at the right&nbsp;time.</p>
       </div>
       <div class="ucard reveal">
-        <div class="badge gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3 3 8l9 5 9-5-9-5Z" stroke-linecap="round" stroke-linejoin="round"/><path d="m3 13 9 5 9-5M3 16.5 12 21l9-4.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="badge soft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3 3 8l9 5 9-5-9-5Z" stroke-linecap="round" stroke-linejoin="round"/><path d="m3 13 9 5 9-5M3 16.5 12 21l9-4.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <h3>Scale Programs</h3>
         <p>Grow beyond what any one staff member can hold in their&nbsp;head.</p>
       </div>
@@ -483,7 +483,7 @@
         <p>Turn one person's knowledge into the whole organization's.</p>
       </div>
       <div class="ucard reveal">
-        <div class="badge indigo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="6" cy="7" r="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="18" cy="7" r="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="18" r="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.7 8.6 11 16m6.3-7.4L13 16" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="badge soft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="6" cy="7" r="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="18" cy="7" r="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="18" r="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.7 8.6 11 16m6.3-7.4L13 16" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <h3>Aligned Teams</h3>
         <p>Fundraising, programs, and leadership on one source of&nbsp;truth.</p>
       </div>
@@ -512,7 +512,7 @@
         <div class="badge indigo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="7" stroke-linecap="round" stroke-linejoin="round"/><path d="m20 20-3.5-3.5M11 8v6M8 11h6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div>
           <h3>Strategic CRM Discovery &amp; Planning</h3>
-          <p>For organizations choosing a CRM, rebuilding one that didn't take, or making sense of a system with ten years of well-intentioned customizations. We deliver a Functional Requirements Document, a platform recommendation, and a phased roadmap.</p>
+          <p>For organizations choosing a CRM, rebuilding one that didn't take, or making sense of a system with ten years of well-intentioned customizations. We deliver a Functional Requirements Document, a platform recommendation, and a phased roadmap. We're platform-agnostic — the goal is the right fit for how your team actually works, not a particular logo.</p>
         </div>
       </div>
       <div class="svc reveal">
@@ -704,8 +704,8 @@
       </details>
 
       <details class="faq reveal">
-        <summary>&ldquo;Why Salesforce specifically — isn't it overkill for an organization our size?&rdquo;<span class="ic">+</span></summary>
-        <div class="ans">Sometimes it is, and we'll say so. But for most growing nonprofits it's a smaller leap than people expect: the first ten licenses are free, fundraising tools are built in, and you're in an open ecosystem rather than dependent on a single vendor or team member. We start small and grow it deliberately instead of building everything at once on shaky data.</div>
+        <summary>&ldquo;Are you tied to Salesforce, or do you find the right fit for us?&rdquo;<span class="ic">+</span></summary>
+        <div class="ans">We start from how your organization actually works, then recommend the platform that fits — not a favorite logo. Often that's Salesforce: the first ten nonprofit licenses are free, fundraising tools are built in, and you're in an open ecosystem rather than dependent on a single vendor or team member. But not always — sometimes a lighter, simpler system is the right call, and we'll tell you. Whatever we land on, we start small and grow it deliberately instead of building everything at once on shaky data.</div>
       </details>
 
       <details class="faq reveal">
@@ -829,6 +829,16 @@
   (function(){
     var mt=document.querySelector('.marquee-track');
     if(mt && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){ mt.innerHTML += mt.innerHTML; }
+  })();
+
+  // FAQ: only one panel open at a time
+  (function(){
+    var faqEls = document.querySelectorAll('details.faq');
+    faqEls.forEach(function(d){
+      d.addEventListener('toggle', function(){
+        if(d.open){ faqEls.forEach(function(o){ if(o!==d && o.open){ o.open=false; } }); }
+      });
+    });
   })();
 </script>
 </body>
